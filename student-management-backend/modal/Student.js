@@ -26,8 +26,8 @@ const studentSchema = new mongoose.Schema(
       type: String,
       default: "", // image path or URL
     },
-    timestamps: true,
-  
-});
-const Student = mongoose.model('student',studentSchema)
-module.exports =Student
+  },
+  { timestamps: true }
+);
+const Student = mongoose.model("student", studentSchema);
+module.exports = Student;
