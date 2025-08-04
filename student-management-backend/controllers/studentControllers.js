@@ -1,4 +1,4 @@
-const Student = require("../modal/student");
+const Student = require("../modal/Student");
 const mongoose = require("mongoose");
 
 // 🔧 Utility: Send error response

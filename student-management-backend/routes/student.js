@@ -2,7 +2,7 @@ const express = require("express");
 const studentControllers = require("../controllers/studentControllers");
 const { protect, admin } = require("../middleware/authMiddleware");
 const { validateStudent } = require("../validators/studentValidator");
-const upload = require("../middleware/upload");
+
 
 const router = express.Router();
 
@@ -11,8 +11,6 @@ router.get("/", studentControllers.getStudents);
 router.get("/:id", protect, studentControllers.getStudentById);
 router.put("/:id", protect, admin, validateStudent, studentControllers.updateStudent);
 router.delete("/:id", protect, admin, studentControllers.deleteStudent);
-
-// Profile image upload route
 
 
 module.exports = router;

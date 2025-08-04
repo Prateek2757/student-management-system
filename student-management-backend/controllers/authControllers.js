@@ -1,9 +1,9 @@
 require("dotenv").config();
-const User = require("../modal/user");
+const User = require("../modal/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// Generate JWT Token
+
 const generateToken = (user) => {
   return jwt.sign(
     { id: user._id, role: user.role },
