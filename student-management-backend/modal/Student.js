@@ -22,12 +22,18 @@ const studentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    courseStatus: {
+      type: String,
+      enum: ["Active", "Inactive"],
+      default: "Active",
+    },
     profileImage: {
       type: String,
-      default: "", // image path or URL
+      default: "",
     },
   },
   { timestamps: true }
 );
+
 const Student = mongoose.model("student", studentSchema);
 module.exports = Student;

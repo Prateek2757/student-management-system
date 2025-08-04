@@ -1,4 +1,5 @@
 import { Edit, Trash2, Users } from "lucide-react";
+import { useState } from "react";
 
 type CourseStatus = "Active" | "Inactive";
 
@@ -27,6 +28,25 @@ export function StudentList({
   onDelete,
   getStatusColor,
 }: StudentListProps) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const studentsPerPage = 5;
+
+  const totalPages = Math.ceil(students.length / studentsPerPage);
+
+  const startIndex = (currentPage - 1) * studentsPerPage;
+  const currentStudents = students.slice(
+    startIndex,
+    startIndex + studentsPerPage
+  );
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) setCurrentPage((prev) => prev - 1);
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage((prev) => prev + 1);
+  };
+
   if (students.length === 0)
     return (
       <div className="text-center py-12">
@@ -52,7 +72,7 @@ export function StudentList({
           </tr>
         </thead>
         <tbody>
-          {students.map((student) => (
+          {currentStudents.map((student) => (
             <tr key={student._id} className="border-b">
               <td className="px-4 py-2">
                 <div className="flex items-center gap-3">
@@ -61,7 +81,9 @@ export function StudentList({
                   </div>
                   <div>
                     <div className="font-medium">{student.name}</div>
-                    <div className="text-sm text-gray-500">{student.email}</div>
+                    <div className="text-sm text-gray-500">
+                      {student.email}
+                    </div>
                   </div>
                 </div>
               </td>
@@ -103,6 +125,29 @@ export function StudentList({
           ))}
         </tbody>
       </table>
+
+      {/* Pagination Controls */}
+      <div className="flex justify-between items-center mt-4 px-4">
+        <p className="text-sm text-gray-600">
+          Page {currentPage} of {totalPages}
+        </p>
+        <div className="space-x-2">
+          <button
+            onClick={handlePrevPage}
+            disabled={currentPage === 1}
+            className="px-3 py-1 rounded border bg-white text-gray-700 hover:bg-gray-100 disabled:opacity-50"
+          >
+            Previous
+          </button>
+          <button
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+            className="px-3 py-1 rounded border bg-white text-gray-700 hover:bg-gray-100 disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

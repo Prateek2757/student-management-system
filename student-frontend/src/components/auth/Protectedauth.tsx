@@ -1,20 +1,19 @@
-// src/components/auth/ProtectedRoute.tsx
-import { useAuth } from "@/contexts/AuthContext";
+import React from "react";
 import { Navigate } from "react-router-dom";
-import type { ReactNode } from "react";
+import { useAuth } from "@/contexts/AuthContext";
 
-interface ProtectedRouteProps {
-  children: ReactNode;
-  role?: "admin" | "student";
-}
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  const { user, loading } = useAuth();
 
-export default function ProtectedRoute({ children, role }: ProtectedRouteProps) {
-  const { user } = useAuth();
+  if (loading) {
+    return <div className="text-center py-10">Loading...</div>;
+  }
 
-  if (!user) return <Navigate to="/login" replace />;
-
-  // Optional role-based check
-  if (role && user.role !== role) return <Navigate to="/" replace />;
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
   return <>{children}</>;
-}
+};
+
+export default ProtectedRoute;

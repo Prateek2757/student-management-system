@@ -2,6 +2,8 @@ import { createContext, useContext, useState, useEffect } from "react";
 import type { ReactNode } from "react";
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 // ✅ Backend Student type
 export interface Student {
   _id: string;
@@ -60,7 +62,7 @@ export const StudentProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
     try {
       const token = getTokenOrThrow();
-      const res = await axios.get("http://localhost:8080/api/student", {
+      const res = await axios.get(`${API_URL}/student`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -77,7 +79,7 @@ export const StudentProvider = ({ children }: { children: ReactNode }) => {
   const fetchStudentById = async (id: string): Promise<Student | null> => {
     try {
       const token = getTokenOrThrow();
-      const res = await axios.get(`http://localhost:8080/api/student/${id}`, {
+      const res = await axios.get(`${API_URL}/student/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -92,7 +94,7 @@ export const StudentProvider = ({ children }: { children: ReactNode }) => {
   const addStudent = async (data: NewStudentInput) => {
     try {
       const token = getTokenOrThrow();
-      const res = await axios.post("http://localhost:8080/api/student", data, {
+      const res = await axios.post(`${API_URL}/student`, data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -111,7 +113,7 @@ export const StudentProvider = ({ children }: { children: ReactNode }) => {
     try {
       const token = getTokenOrThrow();
       const res = await axios.put(
-        `http://localhost:8080/api/student/${id}`,
+        `${API_URL}/student/${id}`,
         data,
         {
           headers: {
@@ -136,7 +138,7 @@ export const StudentProvider = ({ children }: { children: ReactNode }) => {
   const deleteStudent = async (id: string) => {
     try {
       const token = getTokenOrThrow();
-      await axios.delete(`http://localhost:8080/api/student/${id}`, {
+      await axios.delete(`${API_URL}/student/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -147,6 +149,7 @@ export const StudentProvider = ({ children }: { children: ReactNode }) => {
       console.error("❌ Failed to delete student:", error);
     }
   };
+  
 
   // Fetch all on mount
   useEffect(() => {

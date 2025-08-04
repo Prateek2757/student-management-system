@@ -56,9 +56,12 @@ export function AppSidebar() {
             <GraduationCap className="h-4 w-4" />
           </div>
           {!isCollapsed && (
+
             <div>
+              <a href="/">
               <h1 className="text-lg font-semibold">StudentMS</h1>
               <p className="text-xs text-muted-foreground">Management System</p>
+              </a>
             </div>
           )}
         </div>
@@ -115,7 +118,7 @@ export function AppSidebar() {
       <SidebarFooter className="border-t border-border p-4">
         <div className="flex items-center gap-3">
           <Avatar className="h-8 w-8">
-            <AvatarImage src={user?.avatar || "/placeholder.svg"} alt={user?.name || "User"} />
+            <AvatarImage src={user?.profileImage || "/placeholder.svg"} alt={user?.name || "User"} />
             <AvatarFallback>
               {((user?.name?.[0] || "") + (user?.name?.[1] || "")).toUpperCase() || "US"}
             </AvatarFallback>

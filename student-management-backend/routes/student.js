@@ -1,13 +1,18 @@
 const express = require("express");
 const studentControllers = require("../controllers/studentControllers");
-const authMiddleware= require("../middleware/authMiddleware")
-const {validateStudent} = require("../validators/studentValidator")
+const { protect, admin } = require("../middleware/authMiddleware");
+const { validateStudent } = require("../validators/studentValidator");
+const upload = require("../middleware/upload");
+
 const router = express.Router();
 
-router.post("/",authMiddleware,validateStudent,studentControllers.createStudent)
-router.get("/",authMiddleware,studentControllers.getStudents)
-router.get("/:id",authMiddleware,studentControllers.getStudentById)
-router.put("/:id",authMiddleware,validateStudent,studentControllers.updateStudent)
-router.delete("/:id",authMiddleware,studentControllers.deleteStudent)
+router.post("/", protect, admin, validateStudent, studentControllers.createStudent);
+router.get("/", studentControllers.getStudents);
+router.get("/:id", protect, studentControllers.getStudentById);
+router.put("/:id", protect, admin, validateStudent, studentControllers.updateStudent);
+router.delete("/:id", protect, admin, studentControllers.deleteStudent);
 
-module.exports=router;
+// Profile image upload route
+
+
+module.exports = router;
