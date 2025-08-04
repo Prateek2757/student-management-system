@@ -180,16 +180,17 @@ export default function Login() {
             <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground">
                 Don't have an account?{" "}
-                <a href="/register" >
+                
                 <Button
                   variant="link"
                   className="p-0 h-auto text-sm font-medium"
                   disabled={isLoading}
+                  onClick={()=> navigate("/register")}
                   >
                   
-                  Contact administrator
+                  SIGN UP
                 </Button>
-                    </a>
+                    
               </p>
             </div>
 
