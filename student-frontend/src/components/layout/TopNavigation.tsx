@@ -65,8 +65,8 @@ export function TopNavigation() {
 
   const handleProfileClick = () => {
     if (!user) return;
-    const route = user.role === "admin" ? "admin" : "student";
-    navigate(`/profile/${route}/${user._id}`);
+  
+    navigate(`/profile`);
   };
 
   const handleSignIn = () => navigate("/login");

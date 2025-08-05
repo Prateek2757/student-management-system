@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { useNavigate, NavLink, useLocation } from "react-router-dom";
 import {
   LayoutDashboard,
   Users,
@@ -6,7 +6,7 @@ import {
   User,
   Settings,
   LogOut,
-  GraduationCap
+  GraduationCap,
 } from "lucide-react";
 import {
   Sidebar,
@@ -38,6 +38,7 @@ const userNavItems = [
 export function AppSidebar() {
   const { state: sidebarState } = useSidebar();
   const location = useLocation();
+  const navigate = useNavigate();
   const { user, logout } = useAuth(); // ✅ Grab user and logout from context
   const isCollapsed = sidebarState === "collapsed";
 
@@ -51,17 +52,14 @@ export function AppSidebar() {
   return (
     <Sidebar className="border-r border-border">
       <SidebarHeader className="border-b border-border p-4">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3" onClick={() => navigate("/")}>
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
             <GraduationCap className="h-4 w-4" />
           </div>
           {!isCollapsed && (
-
             <div>
-              <a href="/">
               <h1 className="text-lg font-semibold">StudentMS</h1>
               <p className="text-xs text-muted-foreground">Management System</p>
-              </a>
             </div>
           )}
         </div>
@@ -118,15 +116,24 @@ export function AppSidebar() {
       <SidebarFooter className="border-t border-border p-4">
         <div className="flex items-center gap-3">
           <Avatar className="h-8 w-8">
-            <AvatarImage src={user?.profileImage || "/placeholder.svg"} alt={user?.name || "User"} />
+            <AvatarImage
+              src={user?.profileImage || "/placeholder.svg"}
+              alt={user?.name || "User"}
+            />
             <AvatarFallback>
-              {((user?.name?.[0] || "") + (user?.name?.[1] || "")).toUpperCase() || "US"}
+              {(
+                (user?.name?.[0] || "") + (user?.name?.[1] || "")
+              ).toUpperCase() || "US"}
             </AvatarFallback>
           </Avatar>
           {!isCollapsed && (
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium truncate">{user?.name || "Unknown User"}</p>
-              <p className="text-xs text-muted-foreground truncate">{user?.email || "unknown@example.com"}</p>
+              <p className="text-sm font-medium truncate">
+                {user?.name || "Unknown User"}
+              </p>
+              <p className="text-xs text-muted-foreground truncate">
+                {user?.email || "unknown@example.com"}
+              </p>
             </div>
           )}
           <Button
