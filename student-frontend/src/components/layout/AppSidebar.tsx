@@ -4,7 +4,7 @@ import {
   Users,
   UserPlus,
   User,
-  Settings,
+ 
   LogOut,
   GraduationCap,
 } from "lucide-react";
@@ -32,7 +32,7 @@ const mainNavItems = [
 
 const userNavItems = [
   { title: "Profile", url: "/profile", icon: User },
-  { title: "Settings", url: "/settings", icon: Settings },
+  
 ];
 
 export function AppSidebar() {
