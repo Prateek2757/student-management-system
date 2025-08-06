@@ -215,7 +215,7 @@ export default function AddStudent() {
               </div>
             </div>
 
-            <div className="flex gap-4 pt-6">
+            <div className="flex gap-4 text-white pt-6">
               <Button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? (
                   <>

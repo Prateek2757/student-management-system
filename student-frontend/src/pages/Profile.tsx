@@ -7,9 +7,9 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
-import { Camera, Mail, Calendar } from "lucide-react";
+import { Camera, Mail } from "lucide-react";
 import { useRef, useState } from "react";
-import { format } from "date-fns";
+
 import { toast } from "sonner";
 
 export default function Profile() {
@@ -39,11 +39,12 @@ export default function Profile() {
     .slice(0, 2)
     .toUpperCase();
 
-  const formattedDate = user?.createdAt
-    ? format(new Date(user.createdAt), "MMMM dd, yyyy")
+
+  const profileImageURL = user?.profileImage
+    ? `${import.meta.env.VITE_API_URL}${user.profileImage}`
     : "";
 
-    console.log("Image URL:", `http://localhost:8080${user?.profileImage}`);
+  console.log("Image URL:", profileImageURL);
 
   return (
     <div className="min-h-screen bg-muted flex items-center justify-center p-4">
@@ -52,7 +53,7 @@ export default function Profile() {
           <div className="relative mx-auto w-28 h-28">
             {user?.profileImage ? (
               <img
-                src={`http://localhost:8080${user.profileImage}`}
+                src={profileImageURL}
                 alt="Profile"
                 className="rounded-full w-full h-full object-cover border-4 border-white shadow-md"
               />
@@ -93,10 +94,6 @@ export default function Profile() {
             <span>{user?.email}</span>
           </div>
 
-          <div className="flex items-center gap-3 text-sm text-muted-foreground">
-            <Calendar className="w-4 h-4" />
-            <span>Joined on {formattedDate}</span>
-          </div>
 
           <div className="pt-4 border-t mt-4 text-center text-muted-foreground text-xs">
             Keep your profile up to date for better communication and identity.
