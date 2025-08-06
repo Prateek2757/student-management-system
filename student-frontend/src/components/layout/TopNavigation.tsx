@@ -1,6 +1,6 @@
 import { useAuth } from "@/contexts/AuthContext";
 import { useStudentContext } from "@/contexts/studentContext";
-import { Menu, Bell } from "lucide-react";
+import { Menu, Bell, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import { SidebarTrigger } from "@/components/ui/sidebar";
@@ -83,6 +83,17 @@ export function TopNavigation() {
           <SearchBarNavigation />
         </div>
       </div>
+      <div className="flex absolute left-[70px] md:hidden items-center justify-between gap-3" onClick={() => navigate("/")}>
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+            <GraduationCap className="h-4 w-4" />
+          </div>
+          
+            <div>
+              <h1 className="text-lg font-semibold">StudentMS</h1>
+              <p className="text-xs text-muted-foreground">Management System</p>
+            </div>
+        
+        </div>
 
       <div className="flex items-center gap-4">
         {/* 🔔 Notification */}
