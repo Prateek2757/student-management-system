@@ -56,7 +56,7 @@ export function StudentList({
   }
 
   return (
-    <div className="w-full overflow-x-auto">
+    <div className="w-full overflow-x-aut">
       <table className="min-w-full table-auto border-collapse text-sm md:text-base">
         <thead className="bg-gray-50">
           <tr>
@@ -82,7 +82,7 @@ export function StudentList({
                   </div>
                 </div>
               </td>
-              <td className="px-3 py-3 hidden sm:table-cell">{student.course}</td>
+              <td className="px-3 py-3 hidde sm:table-cell">{student.course}</td>
               <td className="px-3 py-3">
                 <span
                   className={`text-xs px-2 py-1 rounded-full whitespace-nowrap ${getStatusColor(
@@ -92,8 +92,8 @@ export function StudentList({
                   {student.courseStatus}
                 </span>
               </td>
-              <td className="px-3 py-3 hidden md:table-cell">{student.age}</td>
-              <td className="px-3 py-3 hidden md:table-cell text-sm">
+              <td className="px-3 py-3 hiddn md:table-cell">{student.age}</td>
+              <td className="px-3 py-3 hiddn md:table-cell text-sm">
                 {new Date(student.createdAt).toLocaleDateString()}
               </td>
               {isAdmin && (

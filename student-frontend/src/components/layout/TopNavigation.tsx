@@ -83,8 +83,8 @@ export function TopNavigation() {
           <SearchBarNavigation />
         </div>
       </div>
-      <div className="flex absolute left-[70px] md:hidden items-center justify-between gap-3" onClick={() => navigate("/")}>
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+      <div className="flex absolute left-[70px] md:hidden cursor-pointer items-center justify-between gap-3" onClick={() => navigate("/")}>
+          <div className="flex h-8 w-8 items-center  justify-center rounded-lg bg-primary text-primary-foreground">
             <GraduationCap className="h-4 w-4" />
           </div>
           

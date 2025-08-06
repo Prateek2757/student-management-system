@@ -52,7 +52,7 @@ export function AppSidebar() {
   return (
     <Sidebar className="border-r border-border">
       <SidebarHeader className="border-b border-border p-4">
-        <div className="flex items-center gap-3" onClick={() => navigate("/")}>
+        <div className="flex items-center cursor-pointer gap-3" onClick={() => navigate("/")}>
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
             <GraduationCap className="h-4 w-4" />
           </div>

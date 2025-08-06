@@ -215,20 +215,20 @@ export default function AddStudent() {
               </div>
             </div>
 
-            <div className="flex gap-4 text-white pt-6">
-              <Button type="submit" disabled={isSubmitting}>
+            <div className="flex gap-4  pt-6">
+              <Button type="submit" className="text-white" disabled={isSubmitting}>
                 {isSubmitting ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                    <div className="w-4 h-4 border-2 text-white border-white border-t-transparent rounded-full animate-spin mr-2" />
                     Adding Student...
                   </>
                 ) : (
                   <>
-                    <Save className="w-4 h-4 mr-2" /> Add Student
+                    <Save className="w-4  h-4 mr-2" /> Add Student
                   </>
                 )}
               </Button>
-              <Button type="button" variant="outline" onClick={() => navigate("/students")} disabled={isSubmitting}>
+              <Button type="button" className="text-black" variant="outline" onClick={() => navigate("/students")} disabled={isSubmitting}>
                 Cancel
               </Button>
             </div>

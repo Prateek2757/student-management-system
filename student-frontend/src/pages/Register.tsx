@@ -43,13 +43,13 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-muted p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen   flex items-center justify-center bg-gradient-muted p-4">
+      <div className="w-full md:absolute  bottom-2 max-w-md">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-primary rounded-2xl mb-4 shadow-primary">
             <GraduationCap className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold">EduManage</h1>
+          <h1 className="text-2xl font-bold">STUDENT MANAGEMENT SYSTEM</h1>
           <p className="text-muted-foreground mt-2">Create your account</p>
         </div>
 
@@ -165,11 +165,6 @@ export default function Register() {
           </CardContent>
         </Card>
 
-        <div className="text-center mt-8">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} EduManage. All rights reserved.
-          </p>
-        </div>
       </div>
     </div>
   );

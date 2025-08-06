@@ -45,14 +45,14 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-muted p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-muted overflow-hidden ">
+      <div className="w-full  absolute px-4 max-w-md">
         {/* Logo and Title */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-primary rounded-2xl mb-4 shadow-primary">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-primary rounded-2xl  shadow-primary">
             <GraduationCap className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold">EduManage</h1>
+          <h1 className="text-3xl font-bold">Mind Riser</h1>
           <p className="text-muted-foreground mt-2">
             Student Management System
           </p>
@@ -60,7 +60,7 @@ export default function Login() {
 
         {/* Login Form */}
         <Card className="shadow-custom-lg border-0">
-          <CardHeader className="space-y-1 text-center pb-4">
+          <CardHeader className="space-y-1 text-center pb-">
             <CardTitle className="text-2xl">Welcome back</CardTitle>
             <CardDescription>
               Enter your credentials to access your account
@@ -180,40 +180,18 @@ export default function Login() {
             <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground">
                 Don't have an account?{" "}
-                
                 <Button
                   variant="link"
                   className="p-0 h-auto text-sm font-medium"
                   disabled={isLoading}
-                  onClick={()=> navigate("/register")}
-                  >
-                  
+                  onClick={() => navigate("/register")}
+                >
                   SIGN UP
                 </Button>
-                    
-              </p>
-            </div>
-
-            {/* Demo Credentials */}
-            <div className="mt-4 p-3 bg-muted/30 rounded-lg">
-              <p className="text-xs text-muted-foreground text-center mb-2 font-medium">
-                Demo Credentials
-              </p>
-              <p className="text-xs text-muted-foreground text-center">
-                Email: admin@edumanage.com
-                <br />
-                Password: admin123
               </p>
             </div>
           </CardContent>
         </Card>
-
-        {/* Footer */}
-        <div className="text-center mt-8">
-          <p className="text-xs text-muted-foreground">
-            © 2024 EduManage. All rights reserved.
-          </p>
-        </div>
       </div>
     </div>
   );
